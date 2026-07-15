@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+            width: 1400px;
+            height: 1050px;
+            margin: 0 auto;
+        }
+        /* Hexagon Container Settings */
+        .hex-grid { position: relative; width: 700px; height: 600px; margin: 0 auto; }
+        
+        .hex-wrapper {
+            position: absolute; width: 224px; height: 194px;
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .hex-inner {
+            width: 218px; height: 188px; background: white;
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 10px; text-align: center;
+        }
+        
+        /* Core Hexagon Honeycomb Positioning Algorithm */
+        .pos-center { top: 203px; left: 238px; }
+        .pos-1 { top: 13px; left: 238px; z-index: 10; }
+        .pos-2 { top: 108px; left: 423px; z-index: 10; }
+        .pos-3 { top: 298px; left: 423px; z-index: 10; }
+        .pos-4 { top: 393px; left: 238px; z-index: 10; }
+        .pos-5 { top: 298px; left: 53px; z-index: 10; }
+        .pos-6 { top: 108px; left: 53px; z-index: 10; }
+    </style>
+</head>
+<body class="flex flex-col items-center pt-10 px-8 relative overflow-hidden">
+  
+  <!-- Header -->
+  <div class="text-center mb-8">
+    <h1 class="text-6xl font-extrabold tracking-tight text-blue-900 mb-3">{{ config.header.title }}</h1>
+    <p class="text-lg font-semibold text-gray-500 tracking-widest">{{ config.header.subtitle }}</p>
+  </div>
+  
+  <!-- Main Chart Area -->
+  <div class="flex justify-between w-full flex-grow relative">
+    
+    <!-- Left Sidebar -->
+    <div class="w-1/5 flex flex-col justify-center space-y-12">
+      {% for item in config.left_sidebar %}
+      <div class="text-center">
+        <h3 class="text-base font-bold text-blue-800 mb-3">{{ item.title }}</h3>
+        <ul class="text-sm text-gray-600 font-medium space-y-1 border-r-2 border-dashed border-gray-200 pr-4">
+          {% for detail in item.items %}<li>{{ detail }}</li>{% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Hexagon Grid Center -->
+    <div class="hex-grid">
+       <div class="hex-wrapper pos-center bg-gray-300">
+         <div class="hex-inner">
+           <h2 class="text-lg font-extrabold text-blue-900 leading-tight mb-2 whitespace-pre-line">{{ config.hexagons.center.title }}</h2>
+           <p class="text-[11px] text-gray-500 font-medium whitespace-pre-line">{{ config.hexagons.center.subtitle }}</p>
+         </div>
+       </div>
+       {% for hex in config.hexagons.ring %}
+       <div class="hex-wrapper pos-{{ loop.index }} bg-gradient-to-br {{ hex.color }} shadow-lg">
+         <div class="hex-inner">
+           <h3 class="text-[11px] font-bold text-gray-400 mb-1 tracking-wider">{{ hex.title }}</h3>
+           <div class="font-extrabold text-base mb-2 text-gray-800">{{ hex.tool }}</div>
+           <ul class="text-[10px] text-gray-500 leading-relaxed">
+             {% for feature in hex.features %}<li>{{ feature }}</li>{% endfor %}
+           </ul>
+         </div>
+       </div>
+       {% endfor %}
+    </div>
+
+    <!-- Right Sidebar -->
+    <div class="w-1/5 flex flex-col justify-center space-y-12">
+      {% for item in config.right_sidebar %}
+      <div class="text-center">
+        <h3 class="text-base font-bold text-blue-800 mb-3">{{ item.title }}</h3>
+        <ul class="text-sm text-gray-600 font-medium space-y-1 border-l-2 border-dashed border-gray-200 pl-4">
+          {% for detail in item.items %}<li>{{ detail }}</li>{% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Bottom Pipeline -->
+  <div class="w-full mt-4 text-center border-t-2 border-b-2 border-gray-100 py-6">
+    <h3 class="text-xs font-bold text-blue-400 tracking-widest mb-6">{{ config.pipeline.title }}</h3>
+    <div class="flex justify-between items-center px-12">
+      {% for step in config.pipeline.steps %}
+      <div class="flex flex-col items-center">
+        <div class="w-10 h-10 bg-blue-50 rounded-full mb-2 flex items-center justify-center text-blue-500 text-lg shadow-inner">●</div>
+        <span class="text-[11px] font-bold text-gray-600">{{ step }}</span>
+      </div>
+      {% if not loop.last %}<div class="text-blue-200 text-xl font-bold">➔</div>{% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Footer Features -->
+  <div class="w-full flex justify-between mt-8 px-12 pb-6">
+    {% for foot in config.footer %}
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-500">✦</div>
+      <div class="text-left">
+        <div class="text-[11px] font-bold text-blue-800 tracking-wide">{{ foot.title }}</div>
+        <div class="text-[10px] text-gray-500 mt-0.5">{{ foot.desc }}</div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</body>
+</html>

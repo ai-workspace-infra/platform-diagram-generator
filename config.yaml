@@ -1,0 +1,70 @@
+header:
+  title: "OPEN PLATFORM"
+  subtitle: "CLOUD-NEUTRAL • MULTI-ENVIRONMENT • MULTI-CLOUD • OPEN-SOURCE"
+
+left_sidebar:
+  - title: "IDENTITY"
+    items: ["ZITADEL", "OIDC / SSO", "RBAC"]
+  - title: "OBSERVABILITY"
+    items: ["GRAFANA", "VICTORIAMETRICS", "VECTOR"]
+  - title: "OPERATIONS"
+    items: ["CLI / MAKE", "RUNBOOKS", "PLAYBOOKS"]
+
+right_sidebar:
+  - title: "SECURE"
+    items: ["Vault-Based", "Secret Control", "No Long-Lived Secrets in CI"]
+  - title: "OBSERVABLE"
+    items: ["Metrics, Logs & Audit Trail"]
+  - title: "RECOVERABLE"
+    items: ["Backup, Migration & Disaster Recovery"]
+
+hexagons:
+  center:
+    title: "OPEN PLATFORM\nTOOLKIT"
+    subtitle: "Git-Native Platform Ops\nfor Multi-Cloud Delivery"
+  ring:
+    - title: "1. GIT & CI"
+      tool: "Gitea"
+      features: ["Git Repository", "Actions Compatible", "Pull Request"]
+      color: "from-blue-400 to-cyan-300"
+    - title: "2. INFRASTRUCTURE AS CODE"
+      tool: "OpenTofu"
+      features: ["Declarative IaC", "Remote State", "Reusable Modules"]
+      color: "from-orange-400 to-yellow-400"
+    - title: "3. AUTOMATION & DELIVERY"
+      tool: "Ansible"
+      features: ["CMDB / Inventory", "Playbooks", "Idempotent Delivery"]
+      color: "from-green-500 to-lime-400"
+    - title: "4. SECURITY BY DEFAULT"
+      tool: "Vault"
+      features: ["OIDC / JWT Auth", "Dynamic Secrets", "Least Privilege"]
+      color: "from-purple-500 to-indigo-400"
+    - title: "5. MULTI-ENVIRONMENT LIFECYCLE"
+      tool: "SIT / UAT / PROD"
+      features: ["Branch / Tag Driven Promotion"]
+      color: "from-teal-400 to-emerald-300"
+    - title: "6. CLOUD-NEUTRAL & PORTABLE"
+      tool: "AWS / GCP / Azure"
+      features: ["Multi-Cloud Anywhere"]
+      color: "from-blue-500 to-cyan-400"
+
+pipeline:
+  title: "FROM GIT COMMIT TO MULTI-CLOUD DELIVERY"
+  steps:
+    - "CODE & PR"
+    - "GITEA"
+    - "CI / CD PIPELINE"
+    - "OPENTOFU PROVISION"
+    - "CMDB / INVENTORY"
+    - "ANSIBLE DELIVERY"
+    - "MULTI-CLOUD"
+
+footer:
+  - title: "OPEN-SOURCE"
+    desc: "NO VENDOR LOCK-IN"
+  - title: "CLOUD-NEUTRAL"
+    desc: "DEPLOY ANYWHERE"
+  - title: "AUTOMATED"
+    desc: "REPEATABLE & IDEMPOTENT"
+  - title: "COMPOSABLE"
+    desc: "MODULAR BY DESIGN"
