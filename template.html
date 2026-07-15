@@ -54,7 +54,7 @@
       <div class="text-center">
         <h3 class="text-base font-bold text-blue-800 mb-3">{{ item.title }}</h3>
         <ul class="text-sm text-gray-600 font-medium space-y-1 border-r-2 border-dashed border-gray-200 pr-4">
-          {% for detail in item.items %}<li>{{ detail }}</li>{% endfor %}
+          {% for detail in item['items'] %}<li>{{ detail }}</li>{% endfor %}
         </ul>
       </div>
       {% endfor %}
@@ -87,7 +87,7 @@
       <div class="text-center">
         <h3 class="text-base font-bold text-blue-800 mb-3">{{ item.title }}</h3>
         <ul class="text-sm text-gray-600 font-medium space-y-1 border-l-2 border-dashed border-gray-200 pl-4">
-          {% for detail in item.items %}<li>{{ detail }}</li>{% endfor %}
+          {% for detail in item['items'] %}<li>{{ detail }}</li>{% endfor %}
         </ul>
       </div>
       {% endfor %}

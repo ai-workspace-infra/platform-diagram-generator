@@ -21,7 +21,7 @@ def generate_image():
     print("[3/3] Launching browser engine to capture high-res image...")
     with sync_playwright() as p:
         browser = p.chromium.launch()
-        page = browser.new_page(set_viewport_size={"width": 1400, "height": 1050}, device_scale_factor=2)
+        page = browser.new_page(viewport={"width": 1400, "height": 1050}, device_scale_factor=2)
         
         file_url = f"file://{html_path}"
         page.goto(file_url)
